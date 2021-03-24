@@ -17,12 +17,10 @@ func _on_Title_mouse_entered():
 	var _bgColor = get("custom_styles/panel").bg_color 
 	get("custom_styles/panel").bg_color = Color8(_bgColor.r8,_bgColor.g8,_bgColor.b8,hoverHighlightOpacity)
 
-
 func _on_Title_mouse_exited():
 	if (isFocusing == true): return
 	var _bgColor = get("custom_styles/panel").bg_color 
 	get("custom_styles/panel").bg_color = Color8(_bgColor.r8,_bgColor.g8,_bgColor.b8,idleOpacity)
-
 
 func _on_Title_gui_input(event):
 	if(event is InputEventMouseButton):

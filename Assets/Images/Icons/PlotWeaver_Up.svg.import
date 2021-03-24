@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlotWeaver_Logo.png-f6a98453f797b9441e1fbd4bd52f66e3.stex"
+path="res://.import/PlotWeaver_Up.svg-f8049847a6a1c7938c966d47535f821d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Logo/PlotWeaver_Logo.png"
-dest_files=[ "res://.import/PlotWeaver_Logo.png-f6a98453f797b9441e1fbd4bd52f66e3.stex" ]
+source_file="res://Assets/Images/Icons/PlotWeaver_Up.svg"
+dest_files=[ "res://.import/PlotWeaver_Up.svg-f8049847a6a1c7938c966d47535f821d.stex" ]
 
 [params]
 

@@ -1,205 +1,213 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Writing/Writing_Scene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Themes/testTheme.theme" type="Theme" id=2]
-[ext_resource path="res://Assets/Fonts/Lato/LATOWEB-REGULAR.TTF" type="DynamicFontData" id=3]
-[ext_resource path="res://Assets/Fonts/Montserrat/_DynamicFonts/Montserrat_SemiBold.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Assets/Fonts/Arial/ARIAL.TTF" type="DynamicFontData" id=5]
+[ext_resource path="res://Assets/Images/Icons/PlotWeaver_Logo.svg" type="Texture" id=6]
+[ext_resource path="res://Assets/Fonts/Roboto/ROBOTO-REGULAR.TTF" type="DynamicFontData" id=7]
+[ext_resource path="res://Assets/Images/Icons/PlotWeaver_Export.svg" type="Texture" id=8]
+[ext_resource path="res://Assets/Images/Icons/PlotWeaver_Save.svg" type="Texture" id=9]
+[ext_resource path="res://Scenes/Main.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/CornerMenu_VBox.gd" type="Script" id=12]
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 7 )
 
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+[sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+bg_color = Color( 0.960784, 0.960784, 0.960784, 1 )
+shadow_color = Color( 0, 0, 0, 0.0156863 )
+shadow_size = 9
+anti_aliasing_size = 3
 
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.921569, 0.921569, 0.921569, 1 )
+[sub_resource type="StyleBoxEmpty" id=4]
 
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 1, 1, 1, 1 )
+[sub_resource type="StyleBoxEmpty" id=5]
 
-[sub_resource type="StyleBoxFlat" id=6]
-
-[sub_resource type="StyleBoxEmpty" id=7]
-
-[sub_resource type="StyleBoxEmpty" id=8]
-
-[sub_resource type="StyleBoxEmpty" id=9]
-
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.921569, 0.921569, 0.921569, 1 )
-
-[sub_resource type="StyleBoxEmpty" id=11]
-
-[sub_resource type="StyleBoxFlat" id=12]
-
-[sub_resource type="StyleBoxFlat" id=13]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
-
-[sub_resource type="StyleBoxFlat" id=14]
-
-[sub_resource type="StyleBoxFlat" id=15]
-bg_color = Color( 0.407843, 0.407843, 0.407843, 1 )
-
-[sub_resource type="StyleBoxFlat" id=16]
-bg_color = Color( 0.239216, 0.239216, 0.239216, 1 )
-
-[sub_resource type="StyleBoxFlat" id=17]
-bg_color = Color( 0.768627, 0.768627, 0.768627, 1 )
-border_width_left = 16
-border_color = Color( 0, 0, 0, 0.0627451 )
-
-[sub_resource type="StyleBoxFlat" id=18]
-border_color = Color( 1, 1, 1, 1 )
-
-[sub_resource type="DynamicFont" id=19]
-size = 18
-extra_spacing_bottom = 5
-font_data = ExtResource( 3 )
-fallback/0 = ExtResource( 5 )
-
-[sub_resource type="Theme" id=20]
-resource_local_to_scene = true
-default_font = SubResource( 19 )
-Button/colors/font_color = Color( 0.3, 0.3, 0.3, 0.509804 )
-Button/colors/font_color_disabled = Color( 0.901961, 0.901961, 0.901961, 0.294118 )
-Button/colors/font_color_hover = Color( 0.2, 0.2, 0.2, 0.784314 )
-Button/colors/font_color_pressed = Color( 0.101961, 0.101961, 0.101961, 0.901961 )
-Button/constants/hseparation = 2
-Button/fonts/font = null
-Button/styles/disabled = SubResource( 1 )
-Button/styles/focus = SubResource( 2 )
-Button/styles/hover = SubResource( 3 )
-Button/styles/normal = SubResource( 4 )
-Button/styles/pressed = SubResource( 5 )
-HScrollBar/icons/decrement = null
-HScrollBar/icons/decrement_highlight = null
-HScrollBar/icons/increment = null
-HScrollBar/icons/increment_highlight = null
-HScrollBar/styles/grabber = SubResource( 6 )
-HScrollBar/styles/grabber_highlight = null
-HScrollBar/styles/grabber_pressed = null
-HScrollBar/styles/scroll = null
-HScrollBar/styles/scroll_focus = null
-Label/colors/font_color = Color( 0.392157, 0.392157, 0.392157, 1 )
-Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
-Label/colors/font_outline_modulate = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
-Label/constants/line_spacing = 3
-Label/constants/shadow_as_outline = 0
-Label/constants/shadow_offset_x = 1
-Label/constants/shadow_offset_y = 1
-Label/fonts/font = null
-Label/styles/normal = null
-LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
-LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
-LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
-LineEdit/colors/font_color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
-LineEdit/colors/font_color_selected = Color( 0.972549, 0.972549, 0.972549, 1 )
-LineEdit/colors/font_color_uneditable = Color( 0.88, 0.88, 0.88, 0.5 )
-LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
-LineEdit/constants/minimum_spaces = 0
-LineEdit/fonts/font = ExtResource( 4 )
-LineEdit/icons/clear = null
-LineEdit/styles/focus = SubResource( 7 )
-LineEdit/styles/normal = SubResource( 8 )
-LineEdit/styles/read_only = SubResource( 9 )
-Panel/styles/panel = SubResource( 10 )
-PanelContainer/styles/panel = SubResource( 11 )
-ScrollContainer/styles/bg = null
-TextEdit/colors/background_color = Color( 1, 1, 1, 0 )
-TextEdit/colors/bookmark_color = Color( 0.0784314, 0.490196, 0.980392, 1 )
-TextEdit/colors/brace_mismatch_color = Color( 1, 0.2, 0.2, 1 )
-TextEdit/colors/breakpoint_color = Color( 0.8, 0.8, 0.4, 0.2 )
-TextEdit/colors/caret_background_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/caret_color = Color( 0.145098, 0.682353, 1, 1 )
-TextEdit/colors/code_folding_color = Color( 0.8, 0.8, 0.8, 0.8 )
-TextEdit/colors/completion_background_color = Color( 0.17, 0.16, 0.2, 1 )
-TextEdit/colors/completion_existing_color = Color( 0.87, 0.87, 0.87, 0.13 )
-TextEdit/colors/completion_font_color = Color( 0.67, 0.67, 0.67, 1 )
-TextEdit/colors/completion_scroll_color = Color( 1, 1, 1, 1 )
-TextEdit/colors/completion_selected_color = Color( 0.26, 0.26, 0.27, 1 )
-TextEdit/colors/current_line_color = Color( 0.25, 0.25, 0.26, 0.8 )
-TextEdit/colors/executing_line_color = Color( 0.2, 0.8, 0.2, 0.4 )
-TextEdit/colors/font_color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
-TextEdit/colors/font_color_readonly = Color( 0.517647, 0.517647, 0.517647, 0.501961 )
-TextEdit/colors/font_color_selected = Color( 0.94902, 0.94902, 0.94902, 1 )
-TextEdit/colors/function_color = Color( 0.4, 0.64, 0.81, 1 )
-TextEdit/colors/line_number_color = Color( 0.67, 0.67, 0.67, 0.4 )
-TextEdit/colors/mark_color = Color( 1, 0.4, 0.4, 0.4 )
-TextEdit/colors/member_variable_color = Color( 0.9, 0.31, 0.35, 1 )
-TextEdit/colors/number_color = Color( 0.92, 0.58, 0.2, 1 )
-TextEdit/colors/safe_line_number_color = Color( 0.67, 0.78, 0.67, 0.6 )
-TextEdit/colors/selection_color = Color( 0.145098, 0.682353, 1, 0.392157 )
-TextEdit/colors/symbol_color = Color( 0.94, 0.94, 0.94, 1 )
-TextEdit/colors/word_highlighted_color = Color( 0.8, 0.9, 0.9, 0.15 )
-TextEdit/constants/completion_lines = 7
-TextEdit/constants/completion_max_width = 50
-TextEdit/constants/completion_scroll_width = 3
-TextEdit/constants/line_spacing = 4
-TextEdit/fonts/font = null
-TextEdit/icons/fold = null
-TextEdit/icons/folded = null
-TextEdit/icons/space = null
-TextEdit/icons/tab = null
-TextEdit/styles/completion = SubResource( 12 )
-TextEdit/styles/focus = null
-TextEdit/styles/normal = SubResource( 13 )
-TextEdit/styles/read_only = null
-VScrollBar/icons/decrement = null
-VScrollBar/icons/decrement_highlight = null
-VScrollBar/icons/increment = null
-VScrollBar/icons/increment_highlight = null
-VScrollBar/styles/grabber = SubResource( 14 )
-VScrollBar/styles/grabber_highlight = SubResource( 15 )
-VScrollBar/styles/grabber_pressed = SubResource( 16 )
-VScrollBar/styles/scroll = SubResource( 17 )
-VScrollBar/styles/scroll_focus = SubResource( 18 )
-
-[node name="Panel" type="Panel"]
+[node name="Main_Panel" type="Panel"]
 light_mask = -2147483647
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -0.00219727
-size_flags_horizontal = 3
-size_flags_vertical = 3
 theme = ExtResource( 2 )
+script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -45.8315
-margin_top = 12.8422
-margin_right = -5.83154
-margin_bottom = 732.842
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-margin_right = 40.0
-margin_bottom = 720.0
-rect_min_size = Vector2( 40, 720 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
-color = Color( 0.905882, 0.0901961, 0.0901961, 1 )
-
-[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer"]
-margin_top = 44.0
-margin_right = 40.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 40, 40 )
-color = Color( 0.905882, 0.0901961, 0.0901961, 1 )
 
 [node name="Writing_Panel" parent="." instance=ExtResource( 1 )]
-theme = SubResource( 20 )
+theme = null
+
+[node name="CornerMenu_Canvas" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="CornerMenu_VBox" type="VBoxContainer" parent="CornerMenu_Canvas"]
+modulate = Color( 1, 1, 1, 0.784314 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -180.0
+margin_top = 40.0
+margin_right = -45.0
+margin_bottom = 180.0
+mouse_filter = 2
+custom_constants/separation = 32
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo_HBox" type="HBoxContainer" parent="CornerMenu_Canvas/CornerMenu_VBox"]
+margin_right = 135.0
+margin_bottom = 40.0
+mouse_filter = 2
+custom_constants/separation = 16
+alignment = 2
+
+[node name="PlotWeaver_Label" type="Label" parent="CornerMenu_Canvas/CornerMenu_VBox/Logo_HBox"]
+margin_left = 79.0
+margin_top = 10.0
+margin_right = 79.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="CornerMenu_Canvas/CornerMenu_VBox/Logo_HBox"]
+margin_left = 95.0
+margin_right = 135.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+mouse_filter = 2
+custom_styles/panel = SubResource( 2 )
+
+[node name="Logo_TextureRect" type="TextureRect" parent="CornerMenu_Canvas/CornerMenu_VBox/Logo_HBox/Panel"]
+margin_left = 3.5
+margin_top = 4.0
+margin_right = 35.5
+margin_bottom = 36.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuList_VBox" type="VBoxContainer" parent="CornerMenu_Canvas/CornerMenu_VBox"]
+margin_top = 72.0
+margin_right = 135.0
+margin_bottom = 196.0
+mouse_filter = 2
+custom_constants/separation = 12
+
+[node name="PanelContainer2" type="PanelContainer" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox"]
+margin_right = 135.0
+margin_bottom = 40.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="Save_HBox" type="HBoxContainer" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox/PanelContainer2"]
+margin_right = 135.0
+margin_bottom = 40.0
+mouse_filter = 0
+custom_constants/separation = 16
+alignment = 2
+
+[node name="Save_Label" type="Label" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox/PanelContainer2/Save_HBox"]
+margin_left = 44.0
+margin_top = 10.0
+margin_right = 79.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Save"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox/PanelContainer2/Save_HBox"]
+margin_left = 95.0
+margin_right = 135.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+mouse_filter = 2
+custom_styles/panel = SubResource( 4 )
+
+[node name="Save_TextureRect" type="TextureRect" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox/PanelContainer2/Save_HBox/Panel"]
+margin_left = 9.20276
+margin_top = 7.80591
+margin_right = 33.2028
+margin_bottom = 31.8059
+rect_min_size = Vector2( 24, 24 )
+mouse_filter = 2
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox"]
+margin_top = 52.0
+margin_right = 135.0
+margin_bottom = 92.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="Export_HBox" type="HBoxContainer" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox/PanelContainer"]
+margin_right = 135.0
+margin_bottom = 40.0
+mouse_filter = 0
+custom_constants/separation = 16
+alignment = 2
+
+[node name="Export_Label" type="Label" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox/PanelContainer/Export_HBox"]
+margin_left = 34.0
+margin_top = 10.0
+margin_right = 79.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Export"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox/PanelContainer/Export_HBox"]
+margin_left = 95.0
+margin_right = 135.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+mouse_filter = 2
+custom_styles/panel = SubResource( 4 )
+
+[node name="Export_TextureRect" type="TextureRect" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox/PanelContainer/Export_HBox/Panel"]
+margin_left = 9.45276
+margin_top = 6.80591
+margin_right = 33.4528
+margin_bottom = 30.8059
+rect_min_size = Vector2( 24, 24 )
+mouse_filter = 2
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox"]
+margin_top = 104.0
+margin_right = 135.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 2, 20 )
+custom_styles/panel = SubResource( 5 )
+[connection signal="gui_input" from="." to="." method="_on_Main_Panel_gui_input"]
+[connection signal="mouse_exited" from="CornerMenu_Canvas/CornerMenu_VBox" to="CornerMenu_Canvas/CornerMenu_VBox" method="_on_CornerMenu_VBox_mouse_exited"]
+[connection signal="mouse_entered" from="CornerMenu_Canvas/CornerMenu_VBox/Logo_HBox/Panel/Logo_TextureRect" to="CornerMenu_Canvas/CornerMenu_VBox" method="_on_Logo_TextureRect_mouse_entered"]

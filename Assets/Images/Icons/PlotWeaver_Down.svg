@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-639,-3012)">
+        <g id="Down" transform="matrix(1,0,0,1,639,3012)">
+            <rect x="0" y="0" width="512" height="512" style="fill:none;"/>
+            <g transform="matrix(3.38985e-16,-1.0989,1.21005,3.67926e-16,-3627.64,618.637)">
+                <path d="M343.332,3247.83L343.332,3319L148,3209.5L343.332,3100L343.332,3171.18L512,3171.18L512,3247.83L343.332,3247.83ZM343.332,3227.16L320.582,3227.16L320.582,3281.97C320.582,3281.97 191.311,3209.5 191.311,3209.5C191.311,3209.5 320.582,3137.03 320.582,3137.03C320.582,3137.03 320.582,3191.84 320.582,3191.84L489.25,3191.84C489.25,3191.84 489.25,3227.16 489.25,3227.16C489.25,3227.16 343.332,3227.16 343.332,3227.16Z" style="fill:white;"/>
+            </g>
+        </g>
+    </g>
+</svg>

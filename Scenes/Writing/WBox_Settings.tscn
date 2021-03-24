@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Fonts/Roboto/ROBOTO-REGULAR.TTF" type="DynamicFontData" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 2 )
+HBoxContainer/constants/separation = 10
+Label/colors/font_color = Color( 0, 0, 0, 0.921569 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = null
+Label/styles/normal = null
+PanelContainer/styles/panel = SubResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 0.752941 )
+shadow_color = Color( 0, 0, 0, 0.0156863 )
+shadow_size = 5
+
+[node name="WBox_Settings" type="PanelContainer"]
+modulate = Color( 1, 1, 1, 0.784314 )
+margin_right = 192.0
+mouse_filter = 1
+theme = SubResource( 3 )
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 192.0
+custom_constants/separation = 0
