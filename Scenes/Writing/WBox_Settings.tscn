@@ -11,7 +11,7 @@ font_data = ExtResource( 1 )
 [sub_resource type="Theme" id=3]
 default_font = SubResource( 2 )
 HBoxContainer/constants/separation = 10
-Label/colors/font_color = Color( 0, 0, 0, 0.921569 )
+Label/colors/font_color = Color( 0, 0, 0, 0.960784 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
 Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 Label/constants/line_spacing = 3
@@ -28,7 +28,7 @@ shadow_color = Color( 0, 0, 0, 0.0156863 )
 shadow_size = 5
 
 [node name="WBox_Settings" type="PanelContainer"]
-modulate = Color( 1, 1, 1, 0.784314 )
+modulate = Color( 1, 1, 1, 0.882353 )
 margin_right = 192.0
 mouse_filter = 1
 theme = SubResource( 3 )

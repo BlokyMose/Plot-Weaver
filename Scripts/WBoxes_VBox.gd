@@ -1,15 +1,19 @@
 extends VBoxContainer
 
-var wBoxes = []
+var WBoxes = []
 
 func _on_AddRegion_Button_pressed():
-	# Instantiate wBox
-	var wBox_file = load("res://Scenes/Writing/WBox_Panel.tscn").duplicate()
-	var wBox = wBox_file.instance()
-	add_child(wBox)
+	# Instantiate WBox
+	var WBox_file = load("res://Scenes/Writing/WBox_Panel.tscn").duplicate()
+	var WBox = WBox_file.instance()
+	add_child(WBox)
 	
 	# Record WBox
-	wBoxes.append(wBox)
+	WBoxes.append(WBox)
 	
-	# Set wBox number
-	wBox.get_node("HBoxContainer/Number_Panel/Number_Label").set_text(String(wBoxes.size()) +" |")
+	# Set WBox number
+	WBox.get_node("HBoxContainer/Number_Panel/Number_Label").set_text(String(WBoxes.size()) +" |")
+
+func update_numbers():
+	for WBox in WBoxes:
+		WBox.get_node("HBoxContainer/WBox_Panel").update_number()	

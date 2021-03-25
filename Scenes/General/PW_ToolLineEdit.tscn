@@ -1,14 +1,22 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Images/Icons/PlotWeaver_Up.svg" type="Texture" id=1]
-[ext_resource path="res://Scripts/PW_Tool.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/PW_ToolLineEdit.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
-[node name="PW_ToolButton" type="PanelContainer"]
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 6.0
+bg_color = Color( 0, 0, 0, 0.0627451 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 6.0
+bg_color = Color( 0, 0, 0, 0.12549 )
+
+[node name="PW_ToolLineEdit" type="PanelContainer"]
 margin_right = 192.0
 margin_bottom = 32.0
 custom_styles/panel = SubResource( 1 )
@@ -26,6 +34,7 @@ mouse_filter = 2
 margin_right = 32.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
+mouse_filter = 2
 custom_styles/panel = SubResource( 2 )
 
 [node name="Icon_TextureRect" type="TextureRect" parent="HBoxContainer/Icon_Panel"]
@@ -48,9 +57,27 @@ __meta__ = {
 [node name="Name_Label" type="Label" parent="HBoxContainer"]
 margin_left = 36.0
 margin_top = 9.0
-margin_right = 91.0
+margin_right = 74.0
 margin_bottom = 23.0
-text = "Move up"
+text = "Name"
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+margin_left = 78.0
+margin_right = 192.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_colors/selection_color = Color( 0, 0.643137, 1, 0.862745 )
+custom_colors/cursor_color = Color( 0, 0.447059, 1, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 0.980392 )
+placeholder_text = "Value"
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="gui_input" from="." to="." method="_on_PW_ToolButton_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_PW_ToolButton_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_PW_ToolButton_mouse_exited"]
+[connection signal="text_changed" from="HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_changed"]
+[connection signal="text_entered" from="HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]

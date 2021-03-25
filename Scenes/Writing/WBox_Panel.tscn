@@ -23,7 +23,6 @@ shadow_size = 8
 [node name="WBox_Outer_Panel" type="PanelContainer"]
 margin_left = 10.0
 margin_top = 10.0
-mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )

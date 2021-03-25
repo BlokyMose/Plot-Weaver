@@ -9,6 +9,7 @@ var is_editing = false
 onready var _hBox = $WBox_HBox
 onready var _textEdit = $WBox_HBox/WBox_TextEdit
 onready var _label = $W_Label
+onready var _number_label = get_parent().get_node("Number_Panel/Number_Label")
 
 signal signal_editing(is_editing)
 signal signal_hovering(is_hovering)
@@ -17,7 +18,6 @@ func _ready():
 	idleOpacity = get("custom_styles/panel").bg_color.a8
 	
 func editing_mode():
-#	if (is_editing == true): return
 	is_editing = true
 	var _bgColor = get("custom_styles/panel").bg_color 
 	get("custom_styles/panel").bg_color = Color8(_bgColor.r8+highligtAdd,_bgColor.g8+highligtAdd,_bgColor.b8+highligtAdd,255)
@@ -25,11 +25,11 @@ func editing_mode():
 	_textEdit.cursor_set_line(_textEdit.get_line_count()-1)
 	_textEdit.cursor_set_column(_textEdit.get_line(_textEdit.cursor_get_line()).length())
 	
-func setup_editing_mode(is_editing):
-	self.is_editing = is_editing
-	emit_signal("signal_editing",is_editing)
-	_textEdit.visible = is_editing
-	if is_editing:
+func setup_editing_mode(_is_editing):
+	self.is_editing = _is_editing
+	emit_signal("signal_editing",_is_editing)
+	_textEdit.visible = _is_editing
+	if _is_editing:
 		_label.modulate = Color.transparent
 	else:
 		_label.modulate = Color.white
@@ -55,6 +55,9 @@ func update_size():
 	_label.rect_min_size = Vector2(_label.rect_min_size.x, _newHeight)
 #	_label.visible = false
 	_label.set_bbcode(_textEdit.get_text())
+
+func update_number():
+	 _number_label.set_text(String(owner.get_index()+1)+" |")
 
 # -- Signals -- 
 

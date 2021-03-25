@@ -6,9 +6,12 @@ export var idle_color = Color8(0,0,0,64)
 onready var button = $Settings_Button
 var WBox_Settings_path = "res://Scenes/Writing/WBox_Settings.tscn"
 var PW_ToolButton_path = "res://Scenes/General/PW_ToolButton.tscn"
+var PW_ToolLineEdit_path = "res://Scenes/General/PW_ToolLineEdit.tscn"
+
 
 onready var icon_MoveUp = preload("res://Assets/Images/Icons/PlotWeaver_Up.svg")
 onready var icon_MoveDown = preload("res://Assets/Images/Icons/PlotWeaver_Down.svg")
+onready var icon_MoveTo = preload("res://Assets/Images/Icons/PlotWeaver_UpDown.svg")
 
 var keep_active = false
 var is_showing_settings = false
@@ -63,7 +66,11 @@ func create_settings():
 	PW_Toolbutton_MoveDown.setup("Move Down", icon_MoveDown)
 	WBox_Settings.get_node("VBoxContainer").add_child(PW_Toolbutton_MoveDown)
 	
-
+	var PW_Toolbutton_MoveTo = load(PW_ToolLineEdit_path).instance()
+	PW_Toolbutton_MoveTo.connect("click_event",self,"feature_move_to")
+	PW_Toolbutton_MoveTo.setup("Move To", icon_MoveTo, "index")
+	WBox_Settings.get_node("VBoxContainer").add_child(PW_Toolbutton_MoveTo)
+	
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed:
@@ -74,11 +81,21 @@ func _input(event):
 func feature_move_up():
 	if(owner.get_index()>0):
 		owner.get_parent().move_child(owner,owner.get_index()-1)
+		owner.get_parent().update_numbers() # supposedly call WBoxes_VBox
 		reset_button()
 	
 func feature_move_down():
-	owner.get_parent().move_child(owner,owner.get_index()+1)
-	reset_button()
+	if(owner.get_index()<owner.get_parent().get_child_count()-1):
+		owner.get_parent().move_child(owner,owner.get_index()+1)
+		owner.get_parent().update_numbers() # supposedly call WBoxes_VBox
+		reset_button()
+	
+func feature_move_to(index):
+	print("Moveto ",index)
+	if index >= 0 and index <= owner.get_parent().get_child_count()-1:
+		owner.get_parent().move_child(owner,index)
+		owner.get_parent().update_numbers() # supposedly call WBoxes_VBox
+		reset_button()
 
 # --- Signals ---
 
