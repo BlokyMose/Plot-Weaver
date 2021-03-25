@@ -53,7 +53,7 @@ func create_settings():
 	var WBox_Settings_file = load(WBox_Settings_path)
 	WBox_Settings = WBox_Settings_file.instance()
 	get_tree().get_root().add_child(WBox_Settings)
-	WBox_Settings.rect_position = Vector2(rect_global_position.x-WBox_Settings.rect_size.x+rect_size.x,rect_global_position.y+rect_size.y)
+	WBox_Settings.rect_global_position = Vector2($Settings_Button.rect_global_position.x-WBox_Settings.rect_size.x+$Settings_Button.rect_size.x,$Settings_Button.rect_global_position.y+$Settings_Button.rect_size.y)
 
 	# Insert features
 	var PW_Toolbutton_MoveUp = load(PW_ToolButton_path).instance()

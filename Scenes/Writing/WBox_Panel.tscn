@@ -33,6 +33,7 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 650.0
 margin_bottom = 50.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 8
@@ -46,7 +47,9 @@ mouse_default_cursor_shape = 9
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
-[node name="Number_Label" type="Label" parent="HBoxContainer/Number_Panel"]
+[node name="Number_Label" type="Label" parent="HBoxContainer/Number_Panel" groups=[
+"test",
+]]
 modulate = Color( 1, 1, 1, 0.25098 )
 margin_top = 10.0
 margin_right = 64.0
@@ -64,7 +67,7 @@ __meta__ = {
 margin_left = 72.0
 margin_right = 592.0
 margin_bottom = 50.0
-mouse_filter = 1
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 2 )
@@ -79,6 +82,7 @@ margin_top = 10.0
 margin_right = 510.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 500, 30 )
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -100,7 +104,7 @@ margin_top = 10.0
 margin_right = 510.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 500, 30 )
-mouse_filter = 1
+mouse_filter = 2
 mouse_default_cursor_shape = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3

@@ -26,9 +26,8 @@ func _on_PW_ToolButton_gui_input(event):
 		if event.button_index == 1 and event.pressed:
 			commit_text()
 
-func _on_LineEdit_text_changed(new_text):
-	print(new_text)
-	proof_text()
+func _on_LineEdit_text_changed(_new_text):
+	var _to_stop_warning = proof_text()
 	
 func proof_text() -> bool:
 	var _text = $HBoxContainer/LineEdit.get_text()
@@ -44,5 +43,5 @@ func commit_text():
 		emit_signal("click_event", int($HBoxContainer/LineEdit.get_text())-1)
 
 
-func _on_LineEdit_text_entered(new_text):
+func _on_LineEdit_text_entered(_new_text):
 	commit_text()
