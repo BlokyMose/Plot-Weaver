@@ -86,10 +86,13 @@ func _input(event):
 			if holding_control:
 				holding_key = !holding_key
 				if holding_key:
-					_test()
+					pass
 
 func _insert_tags(tag_string):
-	
+	var _tag_string_first = "[" +tag_string+ "]"
+	var _tag_string_first_count = _tag_string_first.length()
+	var _tag_string_last = "[/" +tag_string+ "]"
+	var _tag_string_last_count = _tag_string_last.length()
 	
 	# Insert markup tags at the start and end of selection
 	if _text_edit.is_selection_active():
@@ -117,32 +120,119 @@ func _insert_tags(tag_string):
 				_selection_end = Vector2(_text_edit.get_selection_from_column(), _text_edit.get_selection_from_line())
 		
 		_text_edit.deselect()
+		if _check_tag_exist_around(tag_string):
+			if _selection_start.y!=_selection_end.y:
+				_selection_start = Vector2(_selection_start.x-_tag_string_first_count, _selection_start.y)
+				_selection_end = Vector2(_selection_end.x-_tag_string_first_count, _selection_end.y)
+			
+		
+		# Remove tags inside selection
+		_text_edit.select(_selection_start.y,_selection_start.x,_selection_end.y,_selection_end.x)
+		var _processed_text = _text_edit.get_selection_text()
+		_processed_text = _processed_text.replace(_tag_string_first,"")
+		_processed_text = _processed_text.replace(_tag_string_last,"")
+		_text_edit.cut()
+		_text_edit.insert_text_at_cursor(_processed_text)
 		
 		# Insert tags, and reposition cursor
 		_text_edit.cursor_set_line(_selection_end.y)
 		_text_edit.cursor_set_column(_selection_end.x)
-		_text_edit.insert_text_at_cursor("[/"+tag_string+"]")
+		_text_edit.insert_text_at_cursor(_tag_string_last)
 		var _cursor_end_position = Vector2(_text_edit.cursor_get_column(),_text_edit.cursor_get_line())
 		
 		_text_edit.cursor_set_line(_selection_start.y)
 		_text_edit.cursor_set_column(_selection_start.x)
-		_text_edit.insert_text_at_cursor("["+tag_string+"]")
+		_text_edit.insert_text_at_cursor(_tag_string_first)
 		
 		_text_edit.cursor_set_line(_cursor_end_position.y)
 		_text_edit.cursor_set_column(_cursor_end_position.x-1)
 	
-	# Insert markup tags in cursor position
+	# Insert markup tags by cursor position (without selection)
 	else:
-		_text_edit.insert_text_at_cursor("["+tag_string+"][/"+tag_string+"]")
-		_text_edit.cursor_set_column(_text_edit.cursor_get_column()-4)
-	
-func _test():
-	var _tag_string_first = "[b]"
+		
+		if _check_tag_exist_around(tag_string):
+			return
+		
+		var _do_insert_on_empty = false
+		var _cursor_original_position = Vector2(_text_edit.cursor_get_column(),_text_edit.cursor_get_line())
+		
+		# Check if cursor on the start or the end of line, or in a word
+		if _text_edit.cursor_get_column() == _text_edit.get_line(_text_edit.cursor_get_line()).length():
+			_do_insert_on_empty = true
+		elif _text_edit.cursor_get_column() == 0:
+			_do_insert_on_empty = true
+		else:
+			# Insert markup tags at the start & end of the word of cursor position 
+			_text_edit.select(_text_edit.cursor_get_line(),_text_edit.cursor_get_column(),_text_edit.cursor_get_line(),_text_edit.cursor_get_column()+1)
+			if _text_edit.get_selection_text()!=" ":
+				_text_edit.select(_text_edit.cursor_get_line(),_text_edit.cursor_get_column(),_text_edit.cursor_get_line(),_text_edit.cursor_get_column()-1)
+				if _text_edit.get_selection_text()!=" ":
+					
+					_text_edit.deselect()
+					_text_edit.cursor_set_line(_cursor_original_position.y)
+					_text_edit.cursor_set_column(_cursor_original_position.x)
+					
+					# Forward loop to add last tag
+					for _i in range(0,_text_edit.get_line(_text_edit.cursor_get_line()).length()-_text_edit.cursor_get_column()+1) :
+						# If end of line, add tag
+						if _text_edit.cursor_get_column() == _text_edit.get_line(_text_edit.cursor_get_line()).length():
+							_text_edit.insert_text_at_cursor(_tag_string_last)
+							break
+						
+						_text_edit.select(_text_edit.cursor_get_line(),_text_edit.cursor_get_column(),_text_edit.cursor_get_line(),_text_edit.cursor_get_column()+1)
+						if _text_edit.get_selection_text()==" ":
+							_text_edit.insert_text_at_cursor(_tag_string_last+" ")
+							break
+
+						else:
+							_text_edit.cursor_set_column(_text_edit.cursor_get_column()+1)
+							_text_edit.deselect()
+					
+					_text_edit.deselect()
+					_text_edit.cursor_set_line(_cursor_original_position.y)
+					_text_edit.cursor_set_column(_cursor_original_position.x)
+
+					# Backward loop to add first tag
+					for _i in range(_text_edit.cursor_get_column(),-1,-1) :
+						
+						# if the very start of line, add tag
+						if _text_edit.cursor_get_column() == 0:
+							_text_edit.insert_text_at_cursor(_tag_string_first)
+							break
+						
+						_text_edit.select(_text_edit.cursor_get_line(),_text_edit.cursor_get_column(),_text_edit.cursor_get_line(),_text_edit.cursor_get_column()-1)
+						if _text_edit.get_selection_text()==" ":
+							_text_edit.insert_text_at_cursor(" "+_tag_string_first)
+							break
+						else:
+							_text_edit.cursor_set_column(_text_edit.cursor_get_column()-1)
+							_text_edit.deselect()
+					
+					_text_edit.cursor_set_line(_cursor_original_position.y)
+					_text_edit.cursor_set_column(_cursor_original_position.x+tag_string.length()+2)
+					
+				else:
+					_do_insert_on_empty = true
+			else:
+				_do_insert_on_empty = true
+
+		#Insert markup tags on an empty char 
+		if _do_insert_on_empty:
+			_text_edit.cursor_set_column(_cursor_original_position.x)
+			_text_edit.cursor_set_line(_cursor_original_position.y)
+			
+			_text_edit.insert_text_at_cursor(_tag_string_first+_tag_string_last)
+			_text_edit.cursor_set_column(_text_edit.cursor_get_column()-4)
+
+func _check_tag_exist_around(tag_string) -> bool:
+	var _tag_string_first = "[" +tag_string+ "]"
 	var _tag_string_first_count = _tag_string_first.length()
-	var _tag_string_last = "[/b]"
+	var _tag_string_last = "[/" +tag_string+ "]"
 	var _tag_string_last_count = _tag_string_last.length()
+	var _cursor_original_position = Vector2(_text_edit.cursor_get_column(),_text_edit.cursor_get_line())
+	var _found_tag = false
 	
-	# Forward check
+	# Forward check: toggle off tag_string_last if exists
 	var _break = false
 	for line_index in range(_text_edit.cursor_get_line(),_text_edit.get_line_count()):
 		if _break==false:
@@ -153,12 +243,13 @@ func _test():
 			
 			for char_index in range(start_index,_text_edit.get_line(line_index).length()-_tag_string_last_count+1):
 				
-				# Check first string tag, then break the loop
+				# Check tag_string_first, don't toggle off and stop the loop
 				_text_edit.select(line_index , char_index , line_index , char_index+_tag_string_first_count)
 				if _text_edit.get_selection_text() == _tag_string_first:
 					_text_edit.deselect()
 					_break = true
-					print("BREAK! for")
+					_text_edit.cursor_set_line(_cursor_original_position.y)
+					_text_edit.cursor_set_column(_cursor_original_position.x)
 					break
 					
 				# Check last string tag, then toggle it off
@@ -166,38 +257,68 @@ func _test():
 				if _text_edit.get_selection_text() == _tag_string_last:
 					_text_edit.cut()
 					_break = true
+					_text_edit.cursor_set_line(_cursor_original_position.y)
+					_text_edit.cursor_set_column(_cursor_original_position.x)
+					_found_tag = true
 					break
 					
 				_text_edit.deselect()
 				
 		else:
 			break
-			
+	
+	_text_edit.cursor_set_line(_cursor_original_position.y)
+	_text_edit.cursor_set_column(_cursor_original_position.x)
+	
+	# Backward check: toggle off tag_string_first if exists
 	_break = false
 	for line_index in range(_text_edit.cursor_get_line(),-1,-1):
 		if _break==false:
-			for char_index in range(_text_edit.get_line(line_index).length()-_tag_string_last_count+1,-1,-1):
+			for char_index in range(_text_edit.get_line(line_index).length(),-1,-1):
 				
-				# Check first string tag, then break the loop
-				_text_edit.select(line_index , char_index-_tag_string_first_count , line_index , char_index)
-				if _text_edit.get_selection_text() == _tag_string_first:
-					_text_edit.cut()
-					_break = true
-					break
-					
-				# Check last string tag, then toggle it off
+				# Check last string tag, don't toggle off, stop the loop
 				_text_edit.select(line_index , char_index-_tag_string_last_count , line_index , char_index)
 				if _text_edit.get_selection_text() == _tag_string_last:
 					_text_edit.deselect()
 					_break = true
+					_text_edit.cursor_set_line(_cursor_original_position.y)
+					_text_edit.cursor_set_column(_cursor_original_position.x)
 					break
-				
+					
+				# Check first string tag, toggle it off
+				_text_edit.select(line_index , char_index-_tag_string_first_count , line_index , char_index)
+				if _text_edit.get_selection_text() == _tag_string_first:
+					print('CUT!')
+					_text_edit.cut()
+					_break = true
+					_text_edit.cursor_set_line(_cursor_original_position.y)
+					_text_edit.cursor_set_column(_cursor_original_position.x-_tag_string_first_count)
+					_found_tag = true
+					break
+					
 				_text_edit.deselect()
 				
 		else:
 			break
 	
+	return _found_tag
+
+func _check_tag_exist_inside(tag_string, _selection_start, _selection_end) :
+	var _tag_string_first = "[" +tag_string+ "]"
+	var _tag_string_first_count = _tag_string_first.length()
+	var _tag_string_last = "[/" +tag_string+ "]"
+	var _tag_string_last_count = _tag_string_last.length()
+	var _cursor_original_position = Vector2(_text_edit.cursor_get_column(),_text_edit.cursor_get_line())
 	
+	_text_edit.select(_selection_start.y,_selection_start.x,_selection_end.y,_selection_end.x)
+	
+	var _processed_text = _text_edit.get_selection_text()
+	_processed_text = _processed_text.replace(_tag_string_first,"")
+	_processed_text = _processed_text.replace(_tag_string_last,"")
+	print(_processed_text)
+	_text_edit.cut()
+	_text_edit.insert_text_at_cursor(_processed_text)
+
 func editing_mode():
 	is_editing = true
 	var _bgColor = get("custom_styles/panel").bg_color 
