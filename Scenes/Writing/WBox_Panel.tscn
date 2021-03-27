@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Writing_WBox.gd" type="Script" id=1]
 [ext_resource path="res://Themes/testTheme.theme" type="Theme" id=2]
 [ext_resource path="res://Scripts/Number_Panel.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Images/Icons/PlotWeaver_More.svg" type="Texture" id=4]
 [ext_resource path="res://Scripts/Writing_WBox_Settings_Panel.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Writing/TextTools.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -141,6 +142,15 @@ expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Floating_CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextTools_PanelContainer" parent="Floating_CanvasLayer" instance=ExtResource( 6 )]
+visible = false
+margin_left = 272.751
+margin_top = 20.236
+margin_right = 709.751
+margin_bottom = 57.236
 [connection signal="gui_input" from="." to="HBoxContainer/WBox_Panel" method="_on_WBox_Outer_Panel_gui_input"]
 [connection signal="mouse_entered" from="." to="HBoxContainer/WBox_Panel" method="_on_WBox_Outer_Panel_mouse_entered"]
 [connection signal="mouse_exited" from="." to="HBoxContainer/WBox_Panel" method="_on_WBox_Outer_Panel_mouse_exited"]

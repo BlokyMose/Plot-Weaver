@@ -36,7 +36,6 @@ func reset_button():
 		
 func on_click_outside():
 	if WBox_Settings!=null:
-		print("Not null : ", get_global_mouse_position())
 		if not (get_global_mouse_position().x > WBox_Settings.rect_global_position.x and get_global_mouse_position().x < WBox_Settings.rect_global_position.x + WBox_Settings.rect_size.x):
 			reset_button()
 		elif not (get_global_mouse_position().y > WBox_Settings.rect_global_position.y and get_global_mouse_position().y < WBox_Settings.rect_global_position.y + WBox_Settings.rect_size.y):
