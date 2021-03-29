@@ -9,6 +9,10 @@ var idleOpacity = 0
 
 var is_editing = false
 var holding_control = false
+var holding_shift = false
+var holding_alt = false
+
+
 var holding_key = false
 var holding_mouse_left = false
 var previously_selected_text = ""
@@ -21,6 +25,8 @@ onready var _text_tools = get_parent().get_parent().get_node("Floating_CanvasLay
 
 signal signal_editing(is_editing)
 signal signal_hovering(is_hovering)
+signal signal_insert_WBox(index)
+signal signal_place_cursor_WBox(index)
 
 func _ready():
 	idleOpacity = get("custom_styles/panel").bg_color.a8
@@ -53,9 +59,16 @@ func _input(event):
 		# Control 
 		if event.scancode == KEY_CONTROL:
 			holding_control = event.pressed
-			if not event.pressed:
-				holding_key = false
+				
+
+		# Shift
+		if event.scancode == KEY_SHIFT:
+			holding_shift = event.pressed
 		
+		# Alt
+		if event.scancode == KEY_ALT:
+			holding_alt = event.pressed
+
 		# Bold
 		if event.scancode == KEY_B and not event.echo:
 			if holding_control:
@@ -110,13 +123,49 @@ func _input(event):
 			if holding_control:
 				holding_key = !holding_key
 				if holding_key:
-					print("YO")
 					_clear_formatting()
-		
+
+		# Insert WBox up
+		if event.scancode == KEY_UP and not event.echo:
+			if holding_control:
+				holding_key = !holding_key
+				if holding_key:
+					holding_control = false
+					print("Make up: ",owner.get_index())
+					emit_signal("signal_insert_WBox",owner.get_index())
+
+		# Insert WBox down
+		if event.scancode == KEY_DOWN and not event.echo:
+			if holding_control:
+				holding_key = !holding_key
+				if holding_key:
+					holding_control = false
+					emit_signal("signal_insert_WBox",owner.get_index()+1)
+
+		# Place cursor to WBox up
+		if event.scancode == KEY_UP and not event.echo:
+			if holding_alt:
+				holding_key = !holding_key
+				if holding_key:
+					holding_alt = false
+					print("Move up: ",owner.get_index()-1)
+					emit_signal("signal_place_cursor_WBox",owner.get_index()-1)
+
+		# Place cursor to WBox down
+		if event.scancode == KEY_DOWN and not event.echo:
+			if holding_alt:
+				holding_key = !holding_key
+				if holding_key:
+					holding_alt = false
+					emit_signal("signal_place_cursor_WBox",owner.get_index()+1)
+					
 		# Exit TextTools
 		if event.scancode == KEY_ESCAPE and not event.echo:
-			_text_edit.deselect()
-			_text_tools.visible= false
+			if _text_edit.visible :
+				_text_edit.deselect()
+				_text_tools.visible= false
+			else:
+				_on_WBox_TextEdit_focus_exited()
 	
 	# Selection and TextTools
 	if event is InputEventMouseButton:

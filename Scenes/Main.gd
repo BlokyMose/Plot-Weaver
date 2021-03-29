@@ -2,7 +2,6 @@ extends Panel
 
 func _ready():
 	OS.low_processor_usage_mode = true
-	$FileDialog.popup_centered()
 	
 func release_focus():
 	var current_focus_control = get_focus_owner()
