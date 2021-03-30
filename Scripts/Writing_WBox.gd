@@ -12,16 +12,16 @@ var holding_control = false
 var holding_shift = false
 var holding_alt = false
 
-
 var holding_key = false
 var holding_mouse_left = false
 var previously_selected_text = ""
 
-onready var _hBox = $WBox_HBox
-onready var _text_edit = $WBox_HBox/WBox_TextEdit
-onready var _label = $W_Label
-onready var _number_label = get_parent().get_node("Number_Panel/Number_Label")
-onready var _text_tools = get_parent().get_parent().get_node("Floating_CanvasLayer/TextTools_PanelContainer")
+onready var _WBox_Panel = $HBoxContainer/WBox_Panel
+onready var _hBox = $HBoxContainer/WBox_Panel/WBox_HBox
+onready var _text_edit = $HBoxContainer/WBox_Panel/WBox_HBox/WBox_TextEdit
+onready var _label = $HBoxContainer/WBox_Panel/W_Label
+onready var _number_label = $HBoxContainer/Number_Panel/Number_Label
+onready var _text_tools = $Floating_CanvasLayer/TextTools_PanelContainer
 
 signal signal_editing(is_editing)
 signal signal_hovering(is_hovering)
@@ -29,12 +29,13 @@ signal signal_insert_WBox(index)
 signal signal_place_cursor_WBox(index)
 
 func _ready():
-	idleOpacity = get("custom_styles/panel").bg_color.a8
+	idleOpacity = _WBox_Panel.get("custom_styles/panel").bg_color.a8
 	_text_tools.connect("signal_insert_tag",self,"_insert_tags_by_text_tools")
 	_text_tools.connect("signal_clear_formatting",self,"_clear_formatting_by_text_tools")
+	connect("signal_hovering",$HBoxContainer/Settings_Panel,"show_button")
 	
 # -- Features --
-var nope = 0
+
 func _input(event):
 	# prevent unfocused WBox to execute this method
 	if get_focus_owner() != null:
@@ -131,8 +132,7 @@ func _input(event):
 				holding_key = !holding_key
 				if holding_key:
 					holding_control = false
-					print("Make up: ",owner.get_index())
-					emit_signal("signal_insert_WBox",owner.get_index())
+					emit_signal("signal_insert_WBox",get_index())
 
 		# Insert WBox down
 		if event.scancode == KEY_DOWN and not event.echo:
@@ -140,7 +140,7 @@ func _input(event):
 				holding_key = !holding_key
 				if holding_key:
 					holding_control = false
-					emit_signal("signal_insert_WBox",owner.get_index()+1)
+					emit_signal("signal_insert_WBox",get_index()+1)
 
 		# Place cursor to WBox up
 		if event.scancode == KEY_UP and not event.echo:
@@ -148,8 +148,7 @@ func _input(event):
 				holding_key = !holding_key
 				if holding_key:
 					holding_alt = false
-					print("Move up: ",owner.get_index()-1)
-					emit_signal("signal_place_cursor_WBox",owner.get_index()-1)
+					emit_signal("signal_place_cursor_WBox",get_index()-1)
 
 		# Place cursor to WBox down
 		if event.scancode == KEY_DOWN and not event.echo:
@@ -157,7 +156,7 @@ func _input(event):
 				holding_key = !holding_key
 				if holding_key:
 					holding_alt = false
-					emit_signal("signal_place_cursor_WBox",owner.get_index()+1)
+					emit_signal("signal_place_cursor_WBox",get_index()+1)
 					
 		# Exit TextTools
 		if event.scancode == KEY_ESCAPE and not event.echo:
@@ -489,8 +488,8 @@ func _clear_formatting_by_text_tools():
 
 func editing_mode():
 	is_editing = true
-	var _bgColor = get("custom_styles/panel").bg_color 
-	get("custom_styles/panel").bg_color = Color8(_bgColor.r8+highligtAdd,_bgColor.g8+highligtAdd,_bgColor.b8+highligtAdd,255)
+	var _bgColor = _WBox_Panel.get("custom_styles/panel").bg_color 
+	_WBox_Panel.get("custom_styles/panel").bg_color = Color8(_bgColor.r8+highligtAdd,_bgColor.g8+highligtAdd,_bgColor.b8+highligtAdd,255)
 	_text_edit.grab_focus()
 	if _text_edit.is_selection_active():
 		_text_edit.cursor_set_line(_text_edit.get_selection_to_line())
@@ -529,7 +528,7 @@ func update_size():
 	_label.set_bbcode(_text_edit.get_text())
 
 func update_number():
-	 _number_label.set_text(String(owner.get_index()+1)+" |")
+	 _number_label.set_text(String(get_index()+1)+" |")
 
 # -- Signals -- 
 
@@ -545,16 +544,16 @@ func _on_WBox_Outer_Panel_mouse_entered():
 	emit_signal("signal_hovering", true)
 	
 	if (is_editing == true): return
-	var _bgColor = get("custom_styles/panel").bg_color 
-	get("custom_styles/panel").bg_color = Color8(_bgColor.r8,_bgColor.g8,_bgColor.b8,hoverHighlightOpacity)
+	var _bgColor = _WBox_Panel.get("custom_styles/panel").bg_color 
+	_WBox_Panel.get("custom_styles/panel").bg_color = Color8(_bgColor.r8,_bgColor.g8,_bgColor.b8,hoverHighlightOpacity)
 
 func _on_WBox_Outer_Panel_mouse_exited():
 	emit_signal("signal_hovering", false)
 	
 	if (is_editing == true): return
 	
-	var _bgColor = get("custom_styles/panel").bg_color 
-	get("custom_styles/panel").bg_color = Color8(_bgColor.r8,_bgColor.g8,_bgColor.b8,idleOpacity)
+	var _bgColor = _WBox_Panel.get("custom_styles/panel").bg_color 
+	_WBox_Panel.get("custom_styles/panel").bg_color = Color8(_bgColor.r8,_bgColor.g8,_bgColor.b8,idleOpacity)
 
 func _on_WBox_Outer_Panel_gui_input(event):
 	if(event is InputEventMouseButton):

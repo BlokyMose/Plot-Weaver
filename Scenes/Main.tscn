@@ -1,28 +1,116 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Scenes/Writing/Writing_Scene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Themes/testTheme.theme" type="Theme" id=2]
+[ext_resource path="res://Scripts/CornerMenu.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Images/Icons/PlotWeaver_Logo.svg" type="Texture" id=6]
 [ext_resource path="res://Assets/Fonts/Roboto/ROBOTO-REGULAR.TTF" type="DynamicFontData" id=7]
 [ext_resource path="res://Assets/Images/Icons/PlotWeaver_Export.svg" type="Texture" id=8]
 [ext_resource path="res://Assets/Images/Icons/PlotWeaver_Save.svg" type="Texture" id=9]
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=10]
-[ext_resource path="res://Scripts/CornerMenu_VBox.gd" type="Script" id=12]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="StyleBoxEmpty" id=38]
+
+[sub_resource type="StyleBoxEmpty" id=39]
+
+[sub_resource type="StyleBoxEmpty" id=40]
+
+[sub_resource type="StyleBoxEmpty" id=41]
+
+[sub_resource type="StyleBoxEmpty" id=42]
+
+[sub_resource type="StyleBoxFlat" id=43]
+bg_color = Color( 0.08, 0.08, 0.08, 1 )
+
+[sub_resource type="StyleBoxFlat" id=44]
+bg_color = Color( 0.1, 0.1, 0.1, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=45]
+
+[sub_resource type="StyleBoxFlat" id=46]
+bg_color = Color( 0.121569, 0.121569, 0.121569, 1 )
+
+[sub_resource type="DynamicFont" id=47]
+size = 14
+extra_spacing_top = 2
+extra_spacing_bottom = 2
 font_data = ExtResource( 7 )
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="Theme" id=48]
+default_font = SubResource( 47 )
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = SubResource( 38 )
+Button/styles/focus = SubResource( 39 )
+Button/styles/hover = SubResource( 40 )
+Button/styles/normal = SubResource( 41 )
+Button/styles/pressed = SubResource( 42 )
+LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
+LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
+LineEdit/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/font_color_selected = Color( 0.282353, 0.282353, 0.282353, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0.88, 0.88, 0.88, 0.5 )
+LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
+LineEdit/constants/minimum_spaces = 14
+LineEdit/fonts/font = null
+LineEdit/icons/clear = null
+LineEdit/styles/focus = SubResource( 43 )
+LineEdit/styles/normal = SubResource( 44 )
+LineEdit/styles/read_only = SubResource( 45 )
+WindowDialog/colors/title_color = Color( 0, 0, 0, 1 )
+WindowDialog/constants/close_h_ofs = 18
+WindowDialog/constants/close_v_ofs = 18
+WindowDialog/constants/scaleborder_size = 4
+WindowDialog/constants/title_height = 20
+WindowDialog/fonts/title_font = null
+WindowDialog/icons/close = null
+WindowDialog/icons/close_highlight = null
+WindowDialog/styles/panel = SubResource( 46 )
 
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.960784, 0.960784, 0.960784, 1 )
-shadow_color = Color( 0, 0, 0, 0.0156863 )
-shadow_size = 9
-anti_aliasing_size = 3
+[sub_resource type="StyleBoxEmpty" id=21]
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.95, 0.95, 0.95, 1 )
 
-[sub_resource type="StyleBoxEmpty" id=5]
+[sub_resource type="StyleBoxEmpty" id=23]
+
+[sub_resource type="StyleBoxEmpty" id=24]
+
+[sub_resource type="StyleBoxEmpty" id=25]
+
+[sub_resource type="StyleBoxEmpty" id=26]
+
+[sub_resource type="StyleBoxEmpty" id=27]
+
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0.85, 0.85, 0.85, 1 )
+
+[sub_resource type="StyleBoxFlat" id=29]
+
+[sub_resource type="StyleBoxFlat" id=30]
+
+[sub_resource type="StyleBoxEmpty" id=31]
+
+[sub_resource type="StyleBoxFlat" id=32]
+bg_color = Color( 0.96, 0.96, 0.96, 1 )
+
+[sub_resource type="DynamicFont" id=33]
+size = 14
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxFlat" id=34]
+bg_color = Color( 0.85098, 0.85098, 0.85098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=35]
+
+[sub_resource type="StyleBoxFlat" id=36]
+
+[sub_resource type="StyleBoxEmpty" id=37]
 
 [node name="Main_Panel" type="Panel"]
 light_mask = -2147483647
@@ -42,173 +130,171 @@ theme = null
 [node name="CornerMenu_Canvas" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="CornerMenu_VBox" type="VBoxContainer" parent="CornerMenu_Canvas"]
+[node name="FileDialog" type="FileDialog" parent="CornerMenu_Canvas"]
+visible = true
+margin_left = 157.0
+margin_top = 56.0
+margin_right = 919.0
+margin_bottom = 643.0
+theme = SubResource( 48 )
+custom_colors/folder_icon_modulate = Color( 1, 1, 1, 1 )
+resizable = true
+access = 2
+filters = PoolStringArray( "*.json" )
+current_dir = "/Godot/Projects/Plot Weaver"
+current_path = "/Godot/Projects/Plot Weaver/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CornerMenu_MarginContainer" type="MarginContainer" parent="CornerMenu_Canvas"]
+margin_left = 900.991
+margin_top = 16.8416
+margin_right = 1038.99
+margin_bottom = 110.842
+mouse_filter = 2
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CornerMenu_VBox" type="VBoxContainer" parent="CornerMenu_Canvas/CornerMenu_MarginContainer"]
 modulate = Color( 1, 1, 1, 0.784314 )
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -180.0
-margin_top = 40.0
-margin_right = -45.0
-margin_bottom = 180.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 133.0
+margin_bottom = 161.0
 mouse_filter = 2
 custom_constants/separation = 32
-script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Logo_HBox" type="HBoxContainer" parent="CornerMenu_Canvas/CornerMenu_VBox"]
-margin_right = 135.0
-margin_bottom = 40.0
+[node name="Logo_Panel" type="Panel" parent="CornerMenu_Canvas/CornerMenu_MarginContainer/CornerMenu_VBox"]
+margin_right = 128.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
 mouse_filter = 2
-custom_constants/separation = 16
-alignment = 2
+custom_styles/panel = SubResource( 21 )
 
-[node name="PlotWeaver_Label" type="Label" parent="CornerMenu_Canvas/CornerMenu_VBox/Logo_HBox"]
-margin_left = 79.0
-margin_top = 10.0
-margin_right = 79.0
-margin_bottom = 29.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-align = 2
-valign = 1
+[node name="BG_Panel" type="Panel" parent="CornerMenu_Canvas/CornerMenu_MarginContainer/CornerMenu_VBox/Logo_Panel"]
+margin_left = 88.0046
+margin_right = 128.005
+margin_bottom = 40.0
+custom_styles/panel = SubResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="CornerMenu_Canvas/CornerMenu_VBox/Logo_HBox"]
-margin_left = 95.0
-margin_right = 135.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
-mouse_filter = 2
-custom_styles/panel = SubResource( 2 )
-
-[node name="Logo_TextureRect" type="TextureRect" parent="CornerMenu_Canvas/CornerMenu_VBox/Logo_HBox/Panel"]
-margin_left = 3.5
-margin_top = 4.0
-margin_right = 35.5
-margin_bottom = 36.0
+[node name="Logo_Button" type="Button" parent="CornerMenu_Canvas/CornerMenu_MarginContainer/CornerMenu_VBox/Logo_Panel"]
+modulate = Color( 0.215686, 0.215686, 0.215686, 1 )
+margin_left = 93.6973
+margin_top = 4.56759
+margin_right = 125.697
+margin_bottom = 36.5676
 rect_min_size = Vector2( 32, 32 )
-mouse_filter = 0
-texture = ExtResource( 6 )
-expand = true
-stretch_mode = 5
+custom_styles/hover = SubResource( 23 )
+custom_styles/pressed = SubResource( 24 )
+custom_styles/focus = SubResource( 25 )
+custom_styles/disabled = SubResource( 26 )
+custom_styles/normal = SubResource( 27 )
+toggle_mode = true
+icon = ExtResource( 6 )
+flat = true
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuList_VBox" type="VBoxContainer" parent="CornerMenu_Canvas/CornerMenu_VBox"]
-margin_top = 72.0
-margin_right = 135.0
-margin_bottom = 196.0
+[node name="MenuList_VBox" type="VBoxContainer" parent="CornerMenu_Canvas/CornerMenu_MarginContainer/CornerMenu_VBox"]
+margin_top = 64.0
+margin_right = 128.0
+margin_bottom = 156.0
 mouse_filter = 2
 custom_constants/separation = 12
 
-[node name="PanelContainer2" type="PanelContainer" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox"]
-margin_right = 135.0
+[node name="Save_Button" type="Button" parent="CornerMenu_Canvas/CornerMenu_MarginContainer/CornerMenu_VBox/MenuList_VBox"]
+margin_right = 128.0
 margin_bottom = 40.0
-custom_styles/panel = SubResource( 3 )
+rect_min_size = Vector2( 128, 40 )
+custom_styles/hover = SubResource( 28 )
+custom_styles/pressed = SubResource( 29 )
+custom_styles/focus = SubResource( 30 )
+custom_styles/disabled = SubResource( 31 )
+custom_styles/normal = SubResource( 32 )
+expand_icon = true
 
-[node name="Save_HBox" type="HBoxContainer" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox/PanelContainer2"]
-margin_right = 135.0
-margin_bottom = 40.0
-mouse_filter = 0
-custom_constants/separation = 16
-alignment = 2
-
-[node name="Save_Label" type="Label" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox/PanelContainer2/Save_HBox"]
-margin_left = 44.0
-margin_top = 10.0
-margin_right = 79.0
-margin_bottom = 29.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Save"
-align = 2
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel" type="Panel" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox/PanelContainer2/Save_HBox"]
-margin_left = 95.0
-margin_right = 135.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
-mouse_filter = 2
-custom_styles/panel = SubResource( 4 )
-
-[node name="Save_TextureRect" type="TextureRect" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox/PanelContainer2/Save_HBox/Panel"]
-margin_left = 9.20276
-margin_top = 7.80591
-margin_right = 33.2028
-margin_bottom = 31.8059
-rect_min_size = Vector2( 24, 24 )
-mouse_filter = 2
+[node name="TextureRect" type="TextureRect" parent="CornerMenu_Canvas/CornerMenu_MarginContainer/CornerMenu_VBox/MenuList_VBox/Save_Button"]
+modulate = Color( 0.290196, 0.290196, 0.290196, 1 )
+margin_left = 94.5247
+margin_top = 7.43253
+margin_right = 120.525
+margin_bottom = 33.4325
 texture = ExtResource( 9 )
 expand = true
-stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer" type="PanelContainer" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox"]
-margin_top = 52.0
-margin_right = 135.0
-margin_bottom = 92.0
-custom_styles/panel = SubResource( 3 )
-
-[node name="Export_HBox" type="HBoxContainer" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox/PanelContainer"]
-margin_right = 135.0
-margin_bottom = 40.0
-mouse_filter = 0
-custom_constants/separation = 16
-alignment = 2
-
-[node name="Export_Label" type="Label" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox/PanelContainer/Export_HBox"]
-margin_left = 34.0
-margin_top = 10.0
-margin_right = 79.0
-margin_bottom = 29.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Export"
-align = 2
+[node name="Label" type="Label" parent="CornerMenu_Canvas/CornerMenu_MarginContainer/CornerMenu_VBox/MenuList_VBox/Save_Button"]
+margin_left = 19.7427
+margin_top = 5.85765
+margin_right = 71.7427
+margin_bottom = 34.8577
+custom_fonts/font = SubResource( 33 )
+custom_colors/font_color = Color( 0.25098, 0.25098, 0.25098, 1 )
+text = "Save"
+align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox/PanelContainer/Export_HBox"]
-margin_left = 95.0
-margin_right = 135.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
-mouse_filter = 2
-custom_styles/panel = SubResource( 4 )
+[node name="Export_Button" type="Button" parent="CornerMenu_Canvas/CornerMenu_MarginContainer/CornerMenu_VBox/MenuList_VBox"]
+margin_top = 52.0
+margin_right = 128.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 128, 40 )
+custom_styles/hover = SubResource( 34 )
+custom_styles/pressed = SubResource( 35 )
+custom_styles/focus = SubResource( 36 )
+custom_styles/disabled = SubResource( 37 )
+custom_styles/normal = SubResource( 32 )
+expand_icon = true
 
-[node name="Export_TextureRect" type="TextureRect" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox/PanelContainer/Export_HBox/Panel"]
-margin_left = 9.45276
-margin_top = 6.80591
-margin_right = 33.4528
-margin_bottom = 30.8059
-rect_min_size = Vector2( 24, 24 )
-mouse_filter = 2
+[node name="TextureRect" type="TextureRect" parent="CornerMenu_Canvas/CornerMenu_MarginContainer/CornerMenu_VBox/MenuList_VBox/Export_Button"]
+modulate = Color( 0.290196, 0.290196, 0.290196, 1 )
+margin_left = 94.5247
+margin_top = 7.43253
+margin_right = 120.525
+margin_bottom = 33.4325
 texture = ExtResource( 8 )
 expand = true
-stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="CornerMenu_Canvas/CornerMenu_VBox/MenuList_VBox"]
-margin_top = 104.0
-margin_right = 135.0
-margin_bottom = 124.0
-rect_min_size = Vector2( 2, 20 )
-custom_styles/panel = SubResource( 5 )
+[node name="Label" type="Label" parent="CornerMenu_Canvas/CornerMenu_MarginContainer/CornerMenu_VBox/MenuList_VBox/Export_Button"]
+margin_left = 19.7427
+margin_top = 5.85765
+margin_right = 71.7427
+margin_bottom = 34.8577
+custom_fonts/font = SubResource( 33 )
+custom_colors/font_color = Color( 0.25098, 0.25098, 0.25098, 1 )
+text = "Export"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="gui_input" from="." to="." method="_on_Main_Panel_gui_input"]
-[connection signal="mouse_exited" from="CornerMenu_Canvas/CornerMenu_VBox" to="CornerMenu_Canvas/CornerMenu_VBox" method="_on_CornerMenu_VBox_mouse_exited"]
-[connection signal="mouse_entered" from="CornerMenu_Canvas/CornerMenu_VBox/Logo_HBox/Panel/Logo_TextureRect" to="CornerMenu_Canvas/CornerMenu_VBox" method="_on_Logo_TextureRect_mouse_entered"]
+[connection signal="dir_selected" from="CornerMenu_Canvas/FileDialog" to="CornerMenu_Canvas/CornerMenu_MarginContainer" method="_on_FileDialog_dir_selected"]
+[connection signal="file_selected" from="CornerMenu_Canvas/FileDialog" to="CornerMenu_Canvas/CornerMenu_MarginContainer" method="_on_FileDialog_file_selected"]
+[connection signal="mouse_entered" from="CornerMenu_Canvas/CornerMenu_MarginContainer/CornerMenu_VBox/Logo_Panel/Logo_Button" to="CornerMenu_Canvas/CornerMenu_MarginContainer" method="_on_Logo_Button_mouse_entered"]
+[connection signal="mouse_exited" from="CornerMenu_Canvas/CornerMenu_MarginContainer/CornerMenu_VBox/Logo_Panel/Logo_Button" to="CornerMenu_Canvas/CornerMenu_MarginContainer" method="_on_Logo_Button_mouse_exited"]
+[connection signal="toggled" from="CornerMenu_Canvas/CornerMenu_MarginContainer/CornerMenu_VBox/Logo_Panel/Logo_Button" to="CornerMenu_Canvas/CornerMenu_MarginContainer" method="_on_Logo_Button_toggled"]
+[connection signal="button_down" from="CornerMenu_Canvas/CornerMenu_MarginContainer/CornerMenu_VBox/MenuList_VBox/Save_Button" to="CornerMenu_Canvas/CornerMenu_MarginContainer" method="_on_Save_Button_button_down"]
