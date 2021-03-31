@@ -8,6 +8,7 @@ export var hoverHighlightOpacity = 127
 var idleOpacity = 0
 
 var is_editing = false
+var is_locked = false
 var holding_control = false
 var holding_shift = false
 var holding_alt = false
@@ -22,6 +23,7 @@ onready var _text_edit = $HBoxContainer/WBox_Panel/WBox_HBox/WBox_TextEdit
 onready var _label = $HBoxContainer/WBox_Panel/W_Label
 onready var _number_label = $HBoxContainer/Number_Panel/Number_Label
 onready var _text_tools = $Floating_CanvasLayer/TextTools_PanelContainer
+onready var _settings = $HBoxContainer/Settings_Panel
 
 signal signal_editing(is_editing)
 signal signal_hovering(is_hovering)
@@ -32,6 +34,9 @@ func _ready():
 	idleOpacity = _WBox_Panel.get("custom_styles/panel").bg_color.a8
 	_text_tools.connect("signal_insert_tag",self,"_insert_tags_by_text_tools")
 	_text_tools.connect("signal_clear_formatting",self,"_clear_formatting_by_text_tools")
+	_settings.connect("signal_copy_text",self,"_copy_text")
+	_settings.connect("signal_lock",self,"_lock")
+	
 	connect("signal_hovering",$HBoxContainer/Settings_Panel,"show_button")
 	
 # -- Features --
@@ -484,6 +489,24 @@ func _clear_formatting_by_text_tools():
 	_clear_formatting()
 	editing_mode()
 
+func _copy_text(include_bbcode):
+	if include_bbcode:
+		OS.set_clipboard(_text_edit.text)
+	else:
+		OS.set_clipboard(_label.text)
+
+func _lock(lock):
+	is_locked = lock
+	if is_locked:
+		_on_WBox_TextEdit_focus_exited()
+		_label.selection_enabled = true
+		_label.mouse_filter = Control.MOUSE_FILTER_PASS
+	else:
+		_label.selection_enabled = false
+		_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		setup_editing_mode(true)
+		editing_mode()
+
 # -- Editing Mode -- 
 
 func editing_mode():
@@ -558,8 +581,9 @@ func _on_WBox_Outer_Panel_mouse_exited():
 func _on_WBox_Outer_Panel_gui_input(event):
 	if(event is InputEventMouseButton):
 		if(event.button_index == 1):
-			setup_editing_mode(true)
-			editing_mode()
+			if not is_locked:
+				setup_editing_mode(true)
+				editing_mode()
 
 
 # Archived: position TextTools based on cursor position

@@ -5,16 +5,24 @@ export var idle_color = Color8(0,0,0,64)
 
 signal signal_move_to(WBox,index)
 signal signal_delete(Wbox, index)
+signal signal_copy_text(include_bbcode)
+signal signal_lock(lock)
+
 
 onready var button = $Settings_Button
 var WBox_Settings_path = "res://Scenes/Writing/WBox_Settings.tscn"
 var PW_ToolButton_path = "res://Scenes/General/PW_ToolButton.tscn"
 var PW_ToolLineEdit_path = "res://Scenes/General/PW_ToolLineEdit.tscn"
+var PW_ToolButton_Switch_path = "res://Scenes/General/PW_ToolButton_Switch.tscn"
+
 
 onready var icon_MoveUp = preload("res://Assets/Images/Icons/PlotWeaver_Up.svg")
 onready var icon_MoveDown = preload("res://Assets/Images/Icons/PlotWeaver_Down.svg")
 onready var icon_MoveTo = preload("res://Assets/Images/Icons/PlotWeaver_UpDown.svg")
 onready var icon_Delete = preload("res://Assets/Images/Icons/PlotWeaver_Trash.svg")
+onready var icon_Copy = preload("res://Assets/Images/Icons/PlotWeaver_Copy.svg")
+onready var icon_Lock = preload("res://Assets/Images/Icons/PlotWeaver_Lock.svg")
+onready var icon_Unlock = preload("res://Assets/Images/Icons/PlotWeaver_Unlock.svg")
 
 var keep_active = false
 var is_showing_settings = false
@@ -73,10 +81,40 @@ func create_settings():
 	PW_Toolbutton_MoveTo.setup("Move To", icon_MoveTo, "index")
 	WBox_Settings.get_node("VBoxContainer").add_child(PW_Toolbutton_MoveTo)
 	
+	var _separator = HSeparator.new()
+	WBox_Settings.get_node("VBoxContainer").add_child(_separator)
+	_separator = HSeparator.new()
+	WBox_Settings.get_node("VBoxContainer").add_child(_separator)
+	
+	var PW_Toolbutton_Copy = load(PW_ToolButton_Switch_path).instance()
+	PW_Toolbutton_Copy.connect("click_event",self,"feature_copy_text")
+	PW_Toolbutton_Copy.setup("Copy Text", icon_Copy)
+	WBox_Settings.get_node("VBoxContainer").add_child(PW_Toolbutton_Copy)
+	
+	if owner.is_locked:
+		var PW_Toolbutton_Unlock = load(PW_ToolButton_path).instance()
+		PW_Toolbutton_Unlock.connect("click_event",self,"feature_unlock")
+		PW_Toolbutton_Unlock.setup("Unlock", icon_Unlock)
+		WBox_Settings.get_node("VBoxContainer").add_child(PW_Toolbutton_Unlock)
+	else:
+		var PW_Toolbutton_Lock = load(PW_ToolButton_path).instance()
+		PW_Toolbutton_Lock.connect("click_event",self,"feature_lock")
+		PW_Toolbutton_Lock.setup("Lock", icon_Lock)
+		WBox_Settings.get_node("VBoxContainer").add_child(PW_Toolbutton_Lock)
+		
+		
+		
+	_separator = HSeparator.new()
+	WBox_Settings.get_node("VBoxContainer").add_child(_separator)
+	_separator = HSeparator.new()
+	WBox_Settings.get_node("VBoxContainer").add_child(_separator)
+	
 	var PW_Toolbutton_Delete = load(PW_ToolButton_path).instance()
 	PW_Toolbutton_Delete.connect("click_event",self,"feature_delete")
 	PW_Toolbutton_Delete.setup("Delete", icon_Delete)
 	WBox_Settings.get_node("VBoxContainer").add_child(PW_Toolbutton_Delete)
+	
+
 	
 func _input(event):
 	if event is InputEventMouseButton:
@@ -88,12 +126,12 @@ func _input(event):
 func feature_move_up():
 	if(owner.get_index()>0):
 		emit_signal("signal_move_to", owner,owner.get_index()-1)
-		reset_button()
+	reset_button()
 	
 func feature_move_down():
 	if(owner.get_index()<owner.get_parent().get_child_count()-1):
 		emit_signal("signal_move_to", owner,owner.get_index()+1)
-		reset_button()
+	reset_button()
 	
 func feature_move_to(index):
 	if index >= 0 and index <= owner.get_parent().get_child_count()-1:
@@ -103,7 +141,19 @@ func feature_move_to(index):
 func feature_delete():
 	emit_signal("signal_delete", owner, owner.get_index())
 	reset_button()
+	
+func feature_copy_text(include_bbcode):
+	emit_signal("signal_copy_text", include_bbcode)
+	reset_button()
 
+func feature_lock():
+	emit_signal("signal_lock", true)
+	reset_button()
+
+func feature_unlock():
+	emit_signal("signal_lock", false)
+	reset_button()
+	
 # --- Signals ---
 
 func _on_Settings_Button_mouse_entered():

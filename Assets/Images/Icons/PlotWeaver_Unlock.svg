@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-3952,-3918)">
+        <g id="Unlock" transform="matrix(1,0,0,1,3952,3918)">
+            <rect x="0" y="0" width="512" height="512" style="fill:none;"/>
+            <g transform="matrix(1,0,0,1,-3293.28,-3865.46)">
+                <rect x="3421.01" y="4050.81" width="256.532" height="256.532" style="fill:none;stroke:white;stroke-width:20.83px;"/>
+            </g>
+            <g transform="matrix(-0.547439,0,0,0.530391,2054.27,-2099.23)">
+                <path d="M3613.56,4050.81L3421.01,4050.81L3421.01,4307.34L3421.01,4050.81L3613.56,4050.81L3613.56,4198.04L3613.56,4050.81Z" style="fill:none;stroke:white;stroke-width:38.65px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-3952,-3918)">
+                <path d="M4173.88,4259.49L4173.88,4318.75L4242.12,4318.75L4242.12,4259.49L4262.8,4259.49L4262.8,4149.89L4153.2,4149.89L4153.2,4259.49L4173.88,4259.49ZM4194.71,4238.66L4194.71,4297.92L4221.29,4297.92L4221.29,4238.66L4241.97,4238.66L4241.97,4170.72L4174.03,4170.72L4174.03,4238.66L4194.71,4238.66Z" style="fill:white;"/>
+            </g>
+        </g>
+    </g>
+</svg>

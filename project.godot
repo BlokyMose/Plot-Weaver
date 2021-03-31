@@ -24,9 +24,8 @@ config/name="Plot Weaver"
 config/description="Game screenplay, non-linear narrative, and dialogue creating tool"
 run/main_scene="res://Scenes/Main.tscn"
 boot_splash/image="res://Assets/Images/SplashScreen/PlotWeaver_SplashScreen.png"
-boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.839216, 0.839216, 0.839216, 1 )
-config/icon="res://icon.png"
+config/icon="res://Assets/Images/Icons/PlotWeaver_Logo.png"
 
 [display]
 
