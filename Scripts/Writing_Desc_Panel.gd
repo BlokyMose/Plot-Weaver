@@ -5,6 +5,7 @@ export var hoverHighlightOpacity = 127
 var idleOpacity = 0
 var isFocusing = false
 
+
 func _on_Desc_focus_exited():
 	isFocusing = false
 	_on_Desc_mouse_exited()
