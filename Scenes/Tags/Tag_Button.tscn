@@ -1,16 +1,30 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Tags/Tag_Button.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fonts/Swis/TT0003C_.TTF" type="DynamicFontData" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+resource_local_to_scene = true
+shadow_color = Color( 0, 0, 0, 0.0313726 )
+shadow_size = 4
 
 [sub_resource type="StyleBoxFlat" id=1]
 resource_local_to_scene = true
 bg_color = Color( 1, 1, 1, 1 )
 
+[sub_resource type="DynamicFont" id=2]
+extra_spacing_top = 4
+extra_spacing_bottom = 4
+font_data = ExtResource( 2 )
+
 [node name="Tag_Button" type="Button"]
 margin_right = 95.0
 margin_bottom = 29.0
+custom_styles/hover = SubResource( 3 )
 custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 text = " Tag_Name "
 script = ExtResource( 1 )
 __meta__ = {

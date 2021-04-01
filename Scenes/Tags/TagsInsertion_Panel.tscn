@@ -1,0 +1,372 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://Assets/Fonts/Roboto/ROBOTO-REGULAR.TTF" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Fonts/Roboto/ROBOTO-LIGHT.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/TagsInsertion_Panel.gd" type="Script" id=3]
+[ext_resource path="res://Themes/Theme_PureWhite.tres" type="Theme" id=4]
+[ext_resource path="res://Assets/Fonts/Montserrat/MONTSERRAT-REGULAR.TTF" type="DynamicFontData" id=5]
+[ext_resource path="res://Scripts/Tags/NewTag_Panel.gd" type="Script" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.97, 0.97, 0.97, 1 )
+shadow_color = Color( 0, 0, 0, 0.0627451 )
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.98, 0.98, 0.98, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.94, 0.94, 0.94, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.86, 0.86, 0.86, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.9, 0.9, 0.9, 1 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 1, 1, 1, 1 )
+shadow_color = Color( 0, 0, 0, 0.0156863 )
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.99, 0.99, 0.99, 1 )
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 1, 1, 1, 1 )
+shadow_color = Color( 0, 0, 0, 0.0313726 )
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.988235, 0.988235, 0.988235, 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.988235, 0.988235, 0.988235, 1 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.99, 0.99, 0.99, 1 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 14
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.9, 0.9, 0.9, 1 )
+shadow_color = Color( 0, 0.647059, 1, 0.0941176 )
+shadow_size = 8
+
+[sub_resource type="DynamicFont" id=16]
+size = 19
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=25]
+bg_color = Color( 0.96, 0.96, 0.96, 1 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.96, 0.96, 0.96, 1 )
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.921569, 0.921569, 0.921569, 1 )
+
+[sub_resource type="DynamicFont" id=26]
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.82, 0.82, 0.82, 1 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.780392, 0.780392, 0.780392, 1 )
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0.780392, 0.780392, 0.780392, 1 )
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.86, 0.86, 0.86, 1 )
+
+[sub_resource type="DynamicFont" id=27]
+size = 12
+font_data = ExtResource( 2 )
+
+[node name="TagsInsertion_Panel" type="Panel"]
+margin_left = 249.193
+margin_top = 95.2104
+margin_right = 761.193
+margin_bottom = 543.21
+theme = ExtResource( 4 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Done_Button" type="Button" parent="."]
+margin_left = 165.439
+margin_top = 409.0
+margin_right = 511.439
+margin_bottom = 448.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+text = " Done "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel_Button" type="Button" parent="."]
+margin_top = 409.0
+margin_right = 166.0
+margin_bottom = 448.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+text = "Cancel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main_MarginContainer" type="MarginContainer" parent="."]
+margin_right = 511.0
+margin_bottom = 419.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 12
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main_VBoxContainer" type="VBoxContainer" parent="Main_MarginContainer"]
+margin_left = 10.0
+margin_top = 12.0
+margin_right = 501.0
+margin_bottom = 417.0
+custom_constants/separation = 16
+
+[node name="TopControllers_HBoxContainer" type="HBoxContainer" parent="Main_MarginContainer/Main_VBoxContainer"]
+margin_right = 491.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Search_Label" type="Label" parent="Main_MarginContainer/Main_VBoxContainer/TopControllers_HBoxContainer"]
+margin_top = 6.0
+margin_right = 55.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 6 )
+text = "Search: "
+
+[node name="Search_LineEdit" type="LineEdit" parent="Main_MarginContainer/Main_VBoxContainer/TopControllers_HBoxContainer"]
+margin_left = 63.0
+margin_right = 416.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 256, 0 )
+size_flags_horizontal = 3
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
+custom_colors/selection_color = Color( 0, 0.567334, 0.74, 0.705882 )
+custom_colors/cursor_color = Color( 0, 0.764706, 1, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 0.780392 )
+custom_constants/minimum_spaces = 0
+placeholder_text = "tag_name"
+placeholder_alpha = 0.33
+
+[node name="NewTag_MarginContainer" type="MarginContainer" parent="Main_MarginContainer/Main_VBoxContainer/TopControllers_HBoxContainer"]
+margin_left = 424.0
+margin_right = 491.0
+margin_bottom = 32.0
+custom_constants/margin_left = 16
+
+[node name="NewTag_Button" type="Button" parent="Main_MarginContainer/Main_VBoxContainer/TopControllers_HBoxContainer/NewTag_MarginContainer"]
+margin_left = 16.0
+margin_right = 67.0
+margin_bottom = 32.0
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/normal = SubResource( 13 )
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color_disabled = Color( 0.176471, 0.52549, 0.670588, 0.490196 )
+custom_colors/font_color = Color( 0.219608, 0.701961, 0.815686, 1 )
+custom_colors/font_color_hover = Color( 0.188235, 0.615686, 0.713726, 1 )
+custom_colors/font_color_pressed = Color( 0.180392, 0.443137, 0.54902, 1 )
+text = "  + New  "
+
+[node name="TagsList_ScrollContainer" type="ScrollContainer" parent="Main_MarginContainer/Main_VBoxContainer"]
+margin_top = 48.0
+margin_right = 491.0
+margin_bottom = 328.0
+rect_min_size = Vector2( 0, 280 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TagsList_GridContainer" type="GridContainer" parent="Main_MarginContainer/Main_VBoxContainer/TagsList_ScrollContainer"]
+custom_constants/vseparation = 16
+custom_constants/hseparation = 32
+columns = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Added_HBoxContainer" type="HBoxContainer" parent="Main_MarginContainer/Main_VBoxContainer"]
+margin_top = 344.0
+margin_right = 491.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 0, 42 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Added_MarginContainer" type="MarginContainer" parent="Main_MarginContainer/Main_VBoxContainer/Added_HBoxContainer"]
+margin_right = 53.0
+margin_bottom = 48.0
+custom_constants/margin_bottom = 16
+
+[node name="Added_Label" type="Label" parent="Main_MarginContainer/Main_VBoxContainer/Added_HBoxContainer/Added_MarginContainer"]
+margin_top = 6.0
+margin_right = 53.0
+margin_bottom = 25.0
+text = "Added: "
+
+[node name="Added_ScrollContainer" type="ScrollContainer" parent="Main_MarginContainer/Main_VBoxContainer/Added_HBoxContainer"]
+margin_left = 57.0
+margin_right = 405.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 348, 48 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Added_HBoxContainer" type="HBoxContainer" parent="Main_MarginContainer/Main_VBoxContainer/Added_HBoxContainer/Added_ScrollContainer"]
+custom_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="NewTag_Panel" type="Panel" parent="CanvasLayer"]
+margin_left = 390.807
+margin_top = 217.371
+margin_right = 614.807
+margin_bottom = 383.371
+theme = ExtResource( 4 )
+custom_styles/panel = SubResource( 15 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewTagTitle_Label" type="Label" parent="CanvasLayer/NewTag_Panel"]
+anchor_right = 1.0
+margin_top = 5.0
+margin_right = 3.05176e-05
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 16 )
+custom_colors/font_color = Color( 0.16, 0.16, 0.16, 1 )
+text = "New Tag"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name_HBoxContainer" type="HBoxContainer" parent="CanvasLayer/NewTag_Panel"]
+anchor_right = 1.0
+margin_left = 8.0
+margin_top = 44.2339
+margin_right = -8.99997
+margin_bottom = 72.2339
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name_Label" type="Label" parent="CanvasLayer/NewTag_Panel/Name_HBoxContainer"]
+margin_top = 4.0
+margin_right = 54.0
+margin_bottom = 23.0
+text = "Name:  "
+
+[node name="Name_LineEdit" type="LineEdit" parent="CanvasLayer/NewTag_Panel/Name_HBoxContainer"]
+margin_left = 58.0
+margin_right = 207.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 25 )
+custom_colors/font_color = Color( 0.1, 0.1, 0.1, 1 )
+
+[node name="Color_HBoxContainer" type="HBoxContainer" parent="CanvasLayer/NewTag_Panel"]
+anchor_right = 1.0
+margin_left = 8.0
+margin_top = 86.1865
+margin_right = -8.99997
+margin_bottom = 114.187
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Color_Label" type="Label" parent="CanvasLayer/NewTag_Panel/Color_HBoxContainer"]
+margin_top = 4.0
+margin_right = 53.0
+margin_bottom = 23.0
+text = "Color:   "
+
+[node name="Color_OptionButton" type="OptionButton" parent="CanvasLayer/NewTag_Panel/Color_HBoxContainer"]
+margin_left = 57.0
+margin_right = 207.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+text = "- Select -"
+align = 1
+
+[node name="Done_Button" type="Button" parent="CanvasLayer/NewTag_Panel"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 57.0
+margin_top = -26.0
+margin_right = 3.05176e-05
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 23 )
+custom_styles/normal = SubResource( 19 )
+custom_fonts/font = SubResource( 26 )
+text = "Done"
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel_Button" type="Button" parent="CanvasLayer/NewTag_Panel"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -26.0
+margin_right = -167.0
+custom_styles/hover = SubResource( 20 )
+custom_styles/pressed = SubResource( 21 )
+custom_styles/focus = SubResource( 24 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = SubResource( 27 )
+text = "Cancel"
+__meta__ = {
+"_edit_use_anchors_": false
+}

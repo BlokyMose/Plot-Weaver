@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/Fonts/Montserrat/MONTSERRAT-SEMIBOLD.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://Themes/testTheme.theme" type="Theme" id=2]
@@ -8,10 +8,6 @@
 [ext_resource path="res://Scripts/Writing_Scene.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Fonts/Swis/TT0001M_.TTF" type="DynamicFontData" id=7]
 [ext_resource path="res://Scripts/Tags_Panel.gd" type="Script" id=8]
-[ext_resource path="res://Assets/Fonts/Roboto/ROBOTO-REGULAR.TTF" type="DynamicFontData" id=9]
-[ext_resource path="res://Assets/Fonts/Roboto/ROBOTO-LIGHT.TTF" type="DynamicFontData" id=10]
-[ext_resource path="res://Scenes/Tags/Tag_Button.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scripts/TagsInsertion_Panel.gd" type="Script" id=12]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.921569, 0.921569, 0.921569, 0 )
@@ -23,60 +19,17 @@ font_data = ExtResource( 1 )
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.921569, 0.921569, 0.921569, 0 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.960784, 0.960784, 0.960784, 0 )
 
-[sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 1, 0.278431, 0.278431, 1 )
-
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.941176, 0.941176, 0.941176, 1 )
 
-[sub_resource type="StyleBoxEmpty" id=5]
+[sub_resource type="StyleBoxEmpty" id=7]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=8]
 extra_spacing_char = 1
 font_data = ExtResource( 7 )
-
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.97, 0.97, 0.97, 1 )
-shadow_color = Color( 0, 0, 0, 0.0627451 )
-shadow_size = 8
-
-[sub_resource type="DynamicFont" id=10]
-font_data = ExtResource( 10 )
-
-[sub_resource type="StyleBoxFlat" id=13]
-bg_color = Color( 1, 1, 1, 1 )
-shadow_color = Color( 0, 0, 0, 0.0156863 )
-shadow_size = 8
-
-[sub_resource type="StyleBoxFlat" id=11]
-bg_color = Color( 0.99, 0.99, 0.99, 1 )
-
-[sub_resource type="DynamicFont" id=12]
-font_data = ExtResource( 9 )
-
-[sub_resource type="StyleBoxFlat" id=14]
-bg_color = Color( 1, 1, 1, 1 )
-shadow_color = Color( 0, 0, 0, 0.0313726 )
-shadow_size = 8
-
-[sub_resource type="StyleBoxFlat" id=15]
-bg_color = Color( 0.988235, 0.988235, 0.988235, 1 )
-
-[sub_resource type="StyleBoxFlat" id=16]
-bg_color = Color( 0.988235, 0.988235, 0.988235, 1 )
-
-[sub_resource type="StyleBoxFlat" id=17]
-bg_color = Color( 0.99, 0.99, 0.99, 1 )
-
-[sub_resource type="DynamicFont" id=18]
-size = 14
-font_data = ExtResource( 10 )
-
-[sub_resource type="StyleBoxFlat" id=19]
-bg_color = Color( 1, 1, 1, 1 )
 
 [node name="Writing_Panel" type="Panel"]
 anchor_right = 0.963
@@ -114,7 +67,7 @@ __meta__ = {
 }
 
 [node name="Main_VBox" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 976.0
+margin_right = 960.0
 margin_bottom = 680.0
 grow_horizontal = 2
 rect_min_size = Vector2( 960, 660 )
@@ -126,7 +79,7 @@ __meta__ = {
 }
 
 [node name="Title_Panel" type="Panel" parent="ScrollContainer/Main_VBox"]
-margin_right = 976.0
+margin_right = 960.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 960, 100 )
 size_flags_horizontal = 3
@@ -154,7 +107,7 @@ __meta__ = {
 
 [node name="Desc_Panel" type="Panel" parent="ScrollContainer/Main_VBox"]
 margin_top = 115.0
-margin_right = 976.0
+margin_right = 960.0
 margin_bottom = 215.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 3
@@ -181,18 +134,26 @@ __meta__ = {
 
 [node name="Tags_Panel" type="Panel" parent="ScrollContainer/Main_VBox"]
 margin_top = 230.0
-margin_right = 976.0
+margin_right = 960.0
 margin_bottom = 294.0
 rect_min_size = Vector2( 480, 64 )
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 4 )
 script = ExtResource( 8 )
+
+[node name="Tags_Label" type="Label" parent="ScrollContainer/Main_VBox/Tags_Panel"]
+margin_left = 17.0
+margin_top = 17.0
+margin_right = 64.0
+margin_bottom = 46.0
+text = "Tags: "
+valign = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/Main_VBox/Tags_Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 17.0
+margin_left = 69.0
 margin_top = 17.0
-margin_right = -15.0
+margin_right = -14.0
 margin_bottom = -2.0
 rect_min_size = Vector2( 0, 30 )
 mouse_filter = 2
@@ -201,29 +162,14 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/Main_VBox/Tags_Panel/ScrollContainer"]
-margin_right = 107.0
-margin_bottom = 29.0
 mouse_filter = 2
 custom_constants/separation = 8
 
-[node name="Tags_Label" type="Label" parent="ScrollContainer/Main_VBox/Tags_Panel/ScrollContainer/HBoxContainer"]
-margin_right = 47.0
-margin_bottom = 29.0
-text = "Tags: "
-valign = 1
-
-[node name="Tags_Label2" type="Label" parent="ScrollContainer/Main_VBox/Tags_Panel/ScrollContainer/HBoxContainer"]
-margin_left = 55.0
-margin_right = 107.0
-margin_bottom = 29.0
-custom_styles/normal = SubResource( 8 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = " Story "
-valign = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="ScrollContainer/Main_VBox/Tags_Panel"]
 
 [node name="Separator_Label" type="Label" parent="ScrollContainer/Main_VBox"]
 margin_top = 309.0
-margin_right = 976.0
+margin_right = 960.0
 margin_bottom = 338.0
 custom_colors/font_color = Color( 0, 0, 0, 0.0588235 )
 text = "▬▬▬▬"
@@ -231,183 +177,19 @@ align = 1
 
 [node name="WBoxes_VBox" type="VBoxContainer" parent="ScrollContainer/Main_VBox"]
 margin_top = 353.0
-margin_right = 976.0
+margin_right = 960.0
 margin_bottom = 353.0
 custom_constants/separation = 10
 
 [node name="AddRegion_Button" type="Button" parent="ScrollContainer/Main_VBox"]
 margin_top = 368.0
-margin_right = 976.0
+margin_right = 960.0
 margin_bottom = 408.0
 rect_min_size = Vector2( 0, 40 )
-custom_styles/hover = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "- Add new region -"
-
-[node name="TagsInsertion_Panel" type="Panel" parent="."]
-margin_left = 249.193
-margin_top = 95.2104
-margin_right = 761.193
-margin_bottom = 543.21
-custom_styles/panel = SubResource( 9 )
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Done_Button" type="Button" parent="TagsInsertion_Panel"]
-margin_top = 416.0
-margin_right = 512.0
-margin_bottom = 448.0
-text = " Done "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Main_MarginContainer" type="MarginContainer" parent="TagsInsertion_Panel"]
-margin_right = 511.0
-margin_bottom = 419.0
-custom_constants/margin_right = 10
-custom_constants/margin_top = 12
-custom_constants/margin_left = 10
-custom_constants/margin_bottom = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Main_VBoxContainer" type="VBoxContainer" parent="TagsInsertion_Panel/Main_MarginContainer"]
-margin_left = 10.0
-margin_top = 12.0
-margin_right = 501.0
-margin_bottom = 417.0
-custom_constants/separation = 16
-
-[node name="TopControllers_HBoxContainer" type="HBoxContainer" parent="TagsInsertion_Panel/Main_MarginContainer/Main_VBoxContainer"]
-margin_right = 491.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 0, 32 )
-custom_constants/separation = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Search_Label" type="Label" parent="TagsInsertion_Panel/Main_MarginContainer/Main_VBoxContainer/TopControllers_HBoxContainer"]
-margin_top = 6.0
-margin_right = 55.0
-margin_bottom = 25.0
-custom_fonts/font = SubResource( 10 )
-text = "Search: "
-
-[node name="Search_LineEdit" type="LineEdit" parent="TagsInsertion_Panel/Main_MarginContainer/Main_VBoxContainer/TopControllers_HBoxContainer"]
-margin_left = 63.0
-margin_right = 416.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 256, 0 )
-size_flags_horizontal = 3
-custom_styles/focus = SubResource( 13 )
-custom_styles/normal = SubResource( 11 )
-custom_fonts/font = SubResource( 12 )
-custom_colors/selection_color = Color( 0, 0.567334, 0.74, 0.705882 )
-custom_colors/cursor_color = Color( 0, 0.764706, 1, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 0.780392 )
-custom_constants/minimum_spaces = 0
-placeholder_text = "tag_name"
-placeholder_alpha = 0.33
-
-[node name="NewTag_MarginContainer" type="MarginContainer" parent="TagsInsertion_Panel/Main_MarginContainer/Main_VBoxContainer/TopControllers_HBoxContainer"]
-margin_left = 424.0
-margin_right = 491.0
-margin_bottom = 32.0
-custom_constants/margin_left = 16
-
-[node name="NewTag_Button" type="Button" parent="TagsInsertion_Panel/Main_MarginContainer/Main_VBoxContainer/TopControllers_HBoxContainer/NewTag_MarginContainer"]
-margin_left = 16.0
-margin_right = 67.0
-margin_bottom = 32.0
-custom_styles/hover = SubResource( 14 )
-custom_styles/pressed = SubResource( 15 )
-custom_styles/focus = SubResource( 16 )
-custom_styles/normal = SubResource( 17 )
-custom_fonts/font = SubResource( 18 )
-custom_colors/font_color_disabled = Color( 0.176471, 0.52549, 0.670588, 0.490196 )
-custom_colors/font_color = Color( 0.219608, 0.701961, 0.815686, 1 )
-custom_colors/font_color_hover = Color( 0.188235, 0.615686, 0.713726, 1 )
-custom_colors/font_color_pressed = Color( 0.180392, 0.443137, 0.54902, 1 )
-text = "  + New  "
-
-[node name="TagsList_ScrollContainer" type="ScrollContainer" parent="TagsInsertion_Panel/Main_MarginContainer/Main_VBoxContainer"]
-margin_top = 48.0
-margin_right = 491.0
-margin_bottom = 328.0
-rect_min_size = Vector2( 0, 280 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TagsList_GridContainer" type="GridContainer" parent="TagsInsertion_Panel/Main_MarginContainer/Main_VBoxContainer/TagsList_ScrollContainer"]
-margin_right = 95.0
-margin_bottom = 29.0
-custom_constants/vseparation = 16
-custom_constants/hseparation = 32
-columns = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Tag_Button" parent="TagsInsertion_Panel/Main_MarginContainer/Main_VBoxContainer/TagsList_ScrollContainer/TagsList_GridContainer" instance=ExtResource( 11 )]
-custom_styles/normal = SubResource( 19 )
-
-[node name="Added_HBoxContainer" type="HBoxContainer" parent="TagsInsertion_Panel/Main_MarginContainer/Main_VBoxContainer"]
-margin_top = 344.0
-margin_right = 491.0
-margin_bottom = 392.0
-rect_min_size = Vector2( 0, 42 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Added_MarginContainer" type="MarginContainer" parent="TagsInsertion_Panel/Main_MarginContainer/Main_VBoxContainer/Added_HBoxContainer"]
-margin_right = 62.0
-margin_bottom = 48.0
-custom_constants/margin_bottom = 16
-
-[node name="Added_Label" type="Label" parent="TagsInsertion_Panel/Main_MarginContainer/Main_VBoxContainer/Added_HBoxContainer/Added_MarginContainer"]
-margin_top = 1.0
-margin_right = 62.0
-margin_bottom = 30.0
-text = "Added: "
-
-[node name="Added_ScrollContainer" type="ScrollContainer" parent="TagsInsertion_Panel/Main_MarginContainer/Main_VBoxContainer/Added_HBoxContainer"]
-margin_left = 66.0
-margin_right = 414.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 348, 48 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Added_HBoxContainer" type="HBoxContainer" parent="TagsInsertion_Panel/Main_MarginContainer/Main_VBoxContainer/Added_HBoxContainer/Added_ScrollContainer"]
-margin_right = 172.0
-margin_bottom = 29.0
-custom_constants/separation = 8
-
-[node name="Button" type="Button" parent="TagsInsertion_Panel/Main_MarginContainer/Main_VBoxContainer/Added_HBoxContainer/Added_ScrollContainer/Added_HBoxContainer"]
-margin_right = 52.0
-margin_bottom = 29.0
-text = " Story "
-
-[node name="Button4" type="Button" parent="TagsInsertion_Panel/Main_MarginContainer/Main_VBoxContainer/Added_HBoxContainer/Added_ScrollContainer/Added_HBoxContainer"]
-margin_left = 60.0
-margin_right = 112.0
-margin_bottom = 29.0
-text = " Story "
-
-[node name="Button5" type="Button" parent="TagsInsertion_Panel/Main_MarginContainer/Main_VBoxContainer/Added_HBoxContainer/Added_ScrollContainer/Added_HBoxContainer"]
-margin_left = 120.0
-margin_right = 172.0
-margin_bottom = 29.0
-text = " Story "
 [connection signal="focus_exited" from="ScrollContainer/Main_VBox/Title_Panel/Title" to="ScrollContainer/Main_VBox/Title_Panel" method="_on_Title_focus_exited"]
 [connection signal="gui_input" from="ScrollContainer/Main_VBox/Title_Panel/Title" to="ScrollContainer/Main_VBox/Title_Panel" method="_on_Title_gui_input"]
 [connection signal="mouse_entered" from="ScrollContainer/Main_VBox/Title_Panel/Title" to="ScrollContainer/Main_VBox/Title_Panel" method="_on_Title_mouse_entered"]
@@ -416,6 +198,7 @@ text = " Story "
 [connection signal="gui_input" from="ScrollContainer/Main_VBox/Desc_Panel/Desc" to="ScrollContainer/Main_VBox/Desc_Panel" method="_on_Desc_gui_input"]
 [connection signal="mouse_entered" from="ScrollContainer/Main_VBox/Desc_Panel/Desc" to="ScrollContainer/Main_VBox/Desc_Panel" method="_on_Desc_mouse_entered"]
 [connection signal="mouse_exited" from="ScrollContainer/Main_VBox/Desc_Panel/Desc" to="ScrollContainer/Main_VBox/Desc_Panel" method="_on_Desc_mouse_exited"]
+[connection signal="gui_input" from="ScrollContainer/Main_VBox/Tags_Panel" to="ScrollContainer/Main_VBox/Tags_Panel" method="_on_Tags_Panel_gui_input"]
 [connection signal="mouse_entered" from="ScrollContainer/Main_VBox/Tags_Panel" to="ScrollContainer/Main_VBox/Tags_Panel" method="_on_Tags_Panel_mouse_entered"]
 [connection signal="mouse_exited" from="ScrollContainer/Main_VBox/Tags_Panel" to="ScrollContainer/Main_VBox/Tags_Panel" method="_on_Tags_Panel_mouse_exited"]
 [connection signal="pressed" from="ScrollContainer/Main_VBox/AddRegion_Button" to="." method="_on_AddRegion_Button_pressed"]
